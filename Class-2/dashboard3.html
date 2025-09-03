@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0 ; padding: 0%  ; box-sizing: border-box;}
+        html , body {
+            height: 100%;
+            width: 100%;
+        }
+        .parent {
+            display: grid;
+            height: 100dvh;
+            background-color: #ffffff;
+            grid-template-columns: 200px  1fr ;
+            grid-template-rows: 80px 1fr ;
+            gap: 10px;
+            padding: 10px;
+            background: white;
+        }
+        .item1 {
+            background-color: red;
+            border-radius: 10px;
+        }
+        .item2 {
+            background-color: pink;
+            grid-row: 1/4;
+            border-radius: 10px;
+        }
+        .item3{
+            background-color: green;
+            border-radius: 10px;
+        }
+        .content {
+            display: flex;
+            align-items: center ;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="item1 content">
+            <h1>Header</h1>
+        </div>
+        <div class="item2 content">
+            <h2>Sidebar</h2>
+        </div>
+        <div class="item3 content">
+            <h2>Main Content</h2>
+        </div>
+       
+    </div>
+</body>
+</html>

@@ -3,29 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lovebirds Login</title>
+    <title>Task1 Lovebirds Login</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
     <style>
+        *{margin: 0 ; padding: 0%  ; box-sizing: 0;}
         body {
             background: #e5e5e5;
-            min-height: 100vh;
-            display: flex;
+            min-height: 100dvh;
+            width: 100dvw;
+            /* display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: center; */
             font-family: 'Montserrat', Arial, sans-serif;
         }
         .card {
             width: 100dvw;
             height: 100dvh;
             background: #fff;
-            border-radius: 18px;
-            box-shadow: 0 8px 32px rgba(60,60,60,0.12);
+            /* border-radius: 20px; */
+            /* box-shadow: 0 8px 32px rgba(60,60,60,0.12); */
             display: flex;
             overflow: hidden;
         }
         .card-left {
             background: #a4c4b5;
-            width: 50%;
+            width: 60%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -34,8 +37,8 @@
             position: relative;
         }
         .card-left img {
-            width: 220px;
-            height: 220px;
+            width: 300px;
+            height: 300px;
             object-fit: contain;
         }
         .card-left h2 {
@@ -77,9 +80,9 @@
             padding: 40px 40px;
         }
         .logo {
-            font-family: 'Montserrat', cursive;
+            font-family: 'Pacifico', cursive;
             font-size: 2rem;
-            font-weight: 600;
+            font-weight: 400;
             color: #444;
             margin-bottom: 10px;
         }
@@ -144,7 +147,7 @@
             margin: 0 8px;
         }
         .google-btn {
-            width: 100%;
+            width: 60%;
             padding: 10px 0;
             border: 1px solid #eee;
             border-radius: 22px;
@@ -176,7 +179,7 @@
 <body>
     <div class="card">
         <div class="card-left">
-            <img src="lovebirds.jpeg" alt="lovebirds">
+            <img src="lovebird.png" alt="lovebirds">
             <h2>Maecenas mattis egestas</h2>
             <p>Erdum et malesuada fames ac ante ipsum primis in faucibus suspendisse porta.</p>
             <div class="dots">
@@ -189,7 +192,7 @@
         <div class="card-right">
             <div class="logo">Lovebirds</div>
             <div class="welcome">Welcome to Lovebirds</div>
-            <form style="width:100%;">
+            <form style="width:60%;">
                 <div class="form-group">
                     <label for="username">Users name or Email</label>
                     <input type="text" id="username" placeholder="David Brooks">
@@ -203,7 +206,7 @@
             </form>
             <div class="or">or</div>
             <button class="google-btn">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google logo">
+                <img src="googlelogo.png" alt="Google logo">
                 Sign in with Google
             </button>
             <div class="create-account">
@@ -213,82 +216,3 @@
     </div>
 </body>
 </html>
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        .main{
-            width: 100dvw;
-            height: 100dvh;
-            border: 2px solid black;
-            background-color: lightblue;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .first{
-            width: 60%;
-            height: 100%;
-            background-color: #a4c4b5;
-        }
-        .second{
-            width: 40%;
-            height: 100%;
-            background-color: #ffffff
-        }
-        .inputs{
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-        }
-        input{
-            width: 70%;
-            height: 40px;
-            font-size: 20px;
-            padding: 5px 10px;
-        }
-        button{
-            width: 30%;
-            height: 40px;
-            font-size: 20px;
-            color: white;
-            background-color: #696969;
-            border: none;
-            cursor: pointer;
-            border-radius: 20px;
-        }
-    </style>
-</head>
-<body>
-    <div class="main">
-        <div class="first">
-            <div>
-                <img src="lovebirds.jpeg" alt="lovebirds" width="100%" height="100%">
-            </div>
-        </div>
-        <div class="second">
-            <h1 class="label1">LoveBirds</h1>
-            <h2 class="label2">Welcome To LoveBirds</h2>
-            <div class="inputs">
-                <input type="text" placeholder="Enter Your Name">
-                <input type="password" placeholder="Enter Your Phone Number">
-                <button>Sign In</button>
-            </div>
-        </div>
-    </div>
-</body>
-</html> -->
