@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* min-height: 100vh; */
+            background:#f1f2f3;
+            height: 100dvh;
+            width: 100dvw;
+        }
+        .parent{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 180px 230px 230px ; 
+            gap: 15px; 
+            width: 100%;
+            max-width: 1200px; 
+            padding: 20px;
+            margin-top: 0;
+        }
+        .item1{
+            background: #007171;
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+        }
+        .item2{
+            background: #00bbbc;
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+        }
+        .item3{
+            background: #f19b08;
+            grid-column: 3 / 4;
+            grid-row: 1 / 2;
+        }
+        .item4{
+            background: #fa700b;
+            grid-column: 4 / 5;
+            grid-row: 1 / 2;
+        }
+        .item5{
+            background: white;
+            grid-column: 1 / 4;
+            grid-row: 2 / 3;
+        }
+        .item6{
+            background-color: white;
+            grid-column: 4 / 5;
+            grid-row: 2 / 3;
+        }
+        .item7{
+            background-color: white;
+            grid-column: 1 / 2;
+            grid-row: 3 / 4;
+        }
+        .item8{
+            background-color:white;
+            grid-column: 2 / 4;
+            grid-row: 3 / 4;
+        }
+        .item9{
+            background-color:white;
+            grid-column: 4 / 5;
+            grid-row: 3 / 4;
+        }
+        .item10{
+            background-color: white;
+            grid-column: 1 / 5;
+            grid-row: 4 / 5;
+        }
+        .parent, div{
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="parent">
+            <div class="item1"></div>
+            <div class="item2"></div>
+            <div class="item3"></div>
+            <div class="item4"></div>
+            <div class="item5"></div>
+            <div class="item6"></div>
+            <div class="item7"></div>
+            <div class="item8"></div>
+            <div class="item9"></div>
+            <!-- <div class="item10"></div> -->
+        </div>
+    </div>
+</body>
+</html>
