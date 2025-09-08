@@ -1,0 +1,212 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+/* .rammetto-one-regular {
+  font-family: "Rammetto One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+} */
+:root {
+  --white: #fff;
+  --black: #000;
+  --primary-grey: #424242;
+  --secondary-grey: #f5f6f8;
+  --primary-pink: #ff4967;
+  --secondary-pink: #feced6;
+  /* --secondary-pink: #ff6b81; */
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  width: 100%;
+  height: 100%;
+}
+
+/* general css */
+a {
+  text-decoration: none;
+  color: var(--black);
+}
+li {
+  list-style: none;
+}
+h1,
+h2,
+h4 {
+  color: var(--black);
+}
+h1 {
+  font-size: 2.6rem;
+  font-family: "Rammetto One", sans-serif;
+}
+h2 {
+  font-size: 1.5rem;
+}
+h3 {
+  font-size: 1.3rem;
+  color: var(--primary-pink);
+}
+h4 {
+  font-size: 1.2rem;
+}
+p {
+  font-size: 1rem;
+  color: var(--primary-grey);
+  margin: 1rem 0 2rem 0;
+  max-width: 80%;
+}
+.para {
+  max-width: 100%;
+}
+.primary-btn {
+  border: 0.1rem solid var(--primary-pink);
+  background-color: var(--primary-pink);
+  font-size: 1rem;
+  border-radius: 5rem;
+  color: var(--white);
+  padding: 0.6rem 1.5rem;
+}
+[data-type="inverted-btn"] {
+  background: transparent;
+  color: var(--primary-pink);
+}
+[data-type="white-btn"] {
+  background: var(--white);
+  color: var(--primary-pink);
+  border: none;
+}
+.primary-btn:hover {
+  filter: grayscale(1);
+  /* background-color: var(--white); */
+  /* color: var(--primary-pink); */
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+.bg-white {
+  background-color: var(--white);
+}
+.bg-black {
+  background-color: var(--black);
+  color: var(--white);
+}
+.bg-light-pink {
+  background-color: var(--secondary-pink);
+  color: var(--white);
+}
+.bg-pink {
+  background-color: var(--primary-pink);
+  color: var(--white);
+}
+.bg-light-grey {
+  background-color: var(--secondary-grey);
+}
+.bg-light-grey {
+  background-color: var(--secondary-grey);
+}
+.fill-white {
+  color: var(--white);
+}
+.fill-light-pink {
+  color: var(--secondary-pink);
+}
+.section {
+  padding: 6rem 0rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  width: 80%;
+  margin: auto;
+  padding: 0rem 2rem;
+}
+.row-container,
+.column-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.row-container {
+  gap: 7rem;
+}
+.column-container {
+  flex-direction: column;
+  gap: 3rem;
+  text-align: center;
+}
+.content {
+  max-width: 50%;
+}
+img {
+  height: 100%;
+  display: inline-block;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.navlist {
+  display: flex;
+  padding: 0 1rem;
+  align-items: center;
+  width: 60%;
+  margin-right: 0;
+  justify-content: flex-end;
+  gap: 2rem;
+}
+header {
+  background-color: var(--secondary-pink);
+}
+.logo {
+  width: 20%;
+}
+.logo h2 {
+  font-family: "Rammetto One", cursive;
+  font-size: 1.5rem;
+  color: var(--primary-pink);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav-links {
+  font-weight: 500;
+  background-color: var(--primary-pink);
+  border-radius: 5px;
+  color: var(--white);
+  padding: 5px 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-links::after {
+  content: "";
+  position: absolute;
+
+  margin-top: 2px;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--white);
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-links:hover::after {
+  width: 100%;
+}
+
+.nav-links:hover,
+.nav-links.active {
+  background-color: transparent;
+  color: var(--primary-pink);
+  transition: all 0.3s ease-in-out;
+}
