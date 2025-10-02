@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+:root {
+  --white: #fff;
+  --black: #000;
+  --primary-grey: #424242;
+  --secondary-grey: #f1f1e9;
+  --primary-green: #9be784;
+  --secondary-green: #b0ec9c;
+  --primary-purple: #936ff6bf;
+  --secondary-purple: #dac8ff;
+  --primary-yellow: #ffcc00;
+  --secondary-yellow: #ffde8e;
+  --primary-blue: #4db8ffca;
+  --secondary-blue: #b2e1ff;
+  --prmary-darkgreen: #213130;
+  --primary-pink: #f3bdff;
+  /* --secondary-pink: #ff6b81; */
+}
+.bg-white {
+  background-color: var(--white);
+}
+.bg-black {
+  background-color: var(--black);
+}
+.bg-primary-green {
+  background-color: var(--primary-green);
+}
+.bg-secondary-green {
+  background-color: var(--secondary-green);
+}
+.bg-primary-purple {
+  background-color: var(--primary-purple);
+}
+.bg-secondary-purple {
+  background-color: var(--secondary-purple);
+}
+.bg-primary-yellow {
+  background-color: var(--primary-yellow);
+}
+.bg-secondary-yellow {
+  background-color: var(--secondary-yellow);
+}
+.bg-primary-blue {
+  background-color: var(--primary-blue);
+}
+.bg-secondary-blue {
+  background-color: var(--secondary-blue);
+}
+.bg-primary-pink {
+  background-color: var(--primary-pink);
+}
+.bg-secondary-pink {
+  background-color: var(--secondary-pink);
+}
+
+html {
+  scroll-behavior: smooth;
+  color: var(--black);
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--white);
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.logo {
+  font-size: 24px;
+  width: 20%;
+  font-weight: 700;
+  color: var(--black);
+  font-family: "Rammetto One", cursive;
+}
+nav {
+  color: var(--black);
+  font-size: 18px;
+  font-weight: 500;
+  width: 60%;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navlink {
+  /* background-color: #9be784; */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0px;
+  justify-content: center;
+}
+
+.navlink button {
+  font-size: large;
+  background: none;
+  border: none;
+  margin: 0 10px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.action-buttons {
+  width: 20%;
+  display: flex;
+  align-items: center;
+}
+.primary-button {
+  margin-left: 20px;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.login {
+  background-color: transparent;
+  border: 1px solid var(--primary-grey);
+  color: var(--primary-grey);
+}
+.login:hover {
+  background-color: var(--secondary-grey);
+  transform: scale(1.05);
+}
+.signup {
+  background-color: var(--secondary-green);
+  color: var(--primary-darkgreen);
+}
+
+.signup:hover {
+  background-color: var(--primary-green);
+  transform: scale(1.05);
+}
+/* general section */
+section {
+  padding: 100px 0;
+  height: 100vh;
+  background-color: var(--secondary-grey);
+}
+.container {
+  width: 90%;
+  margin: auto;
+  padding: 0rem 2rem;
+  background-color: #fff;
+}
+.row-container,
+.column-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.row-container {
+  gap: 7rem;
+}
+.column-container {
+  flex-direction: column;
+  gap: 3rem;
+  text-align: center;
+}
+.content {
+  max-width: 50%;
+}

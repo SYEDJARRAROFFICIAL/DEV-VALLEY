@@ -10,30 +10,464 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
-
+    <script defer src="main.js"></script>
     <title>PortFolio - Syed Jarrar</title>
   </head>
   <body>
-    <header>
+    <header class="bg-light-grey">
       <nav class="navbar">
         <div class="logo">
-          <h2>Syed Jarrar</h2>
+          <h2>CODEWITHJARRAR</h2>
         </div>
-        <ul class="navlist">
-          <li><a class="nav-links" href="#home">Home</a></li>
+        <ul class="navlist" id="nav-list">
+          <li><a class="nav-links active" href="#home">Home</a></li>
           <li><a class="nav-links" href="#about">About</a></li>
           <li><a class="nav-links" href="#services">Services</a></li>
           <li><a class="nav-links" href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-links" href="#portfolio">Testimonial</a></li>
-          <li><a class="nav-links" href="#contact">Hire Me</a></li>
+          <li><a class="nav-links" href="#testimonial">Testimonial<a></li>
+          <li><a class="primary-btn" href="#contact">Hire Me</a></li>
         </ul>
-        <!-- <div class="hamburger">
-          <div class="line1"></div>
-          <div class="line2"></div>
-          <div class="line3"></div>
-        </div> -->
+        <div class="theme-controls">
+          <!-- Mode Toggle (Light/Dark) -->
+          <div class="mode-toggle" id="mode-toggle" title="Toggle Light/Dark Mode">
+            <i class="fa-solid fa-sun" id="mode-icon"></i>
+          </div>
+          
+          <!-- Theme Color Selector -->
+          <div class="theme-toggle" id="theme-toggle" title="Choose Theme Color">
+            <i class="fa-solid fa-palette"></i>
+            <div class="theme-dropdown" id="theme-dropdown">
+              <div class="theme-option" data-theme="default">
+                <span class="theme-preview theme-preview-default"></span>
+                <span>Classic Pink</span>
+              </div>
+              <div class="theme-option" data-theme="blue">
+                <span class="theme-preview theme-preview-blue"></span>
+                <span>Ocean Blue</span>
+              </div>
+              <div class="theme-option" data-theme="green">
+                <span class="theme-preview theme-preview-green"></span>
+                <span>Nature Green</span>
+              </div>
+              <div class="theme-option" data-theme="purple">
+                <span class="theme-preview theme-preview-purple"></span>
+                <span>Royal Purple</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hamburger" id="ham-burger">
+          <i class="fa-solid fa-bars"></i>
+        </div>
       </nav>
     </header>
+    <main>
+      <!-- ----Hero Section by jarrar--- -->
+      <section class="hero-section bg-light-grey" id="home">
+        <div class="container">
+          <div class="row-container">
+            <div class="content">
+              <h3>Hello!</h3>
+              <h1>I'm Syed Jarrar</h1>
+              <h2>Full Stack Developer</h2>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Voluptatum sequi ipsam sint, beatae assumenda dolor quas quae
+                velit veniam quo!
+              </p>
+              <div class="actions">
+                <a href="assets/Resume.pdf" class="primary-btn" download
+                  >Download CV</a
+                >
+                <a href="#contact" class="primary-btn" data-type="inverted-btn"
+                  >Contact Me</a
+                >
+              </div>
+            </div>
+            <div class="image-container">
+              <img src="assets/profile.png" alt="Profile Picture" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- skills section  -->
+      <section class="section bg-light-pink">
+        <div class="container">
+          <div class="column-container">
+            <div class="content">
+              <h3>Why Choose Me</h3>
+              <h1>My Skills</h1>
+            </div>
+            <div class="skill-container">
+              <div class="skill-bar-container">
+                <div class="info">
+                  <small>HTML</small>
+                  <small>80%</small>
+                </div>
+                <div class="skill-level">
+                  <div class="skill-bar html"></div>
+                </div>
+              </div>
+
+              <div class="skill-bar-container">
+                <div class="info">
+                  <small>CSS</small>
+                  <small>80%</small>
+                </div>
+                <div class="skill-level">
+                  <div class="skill-bar css"></div>
+                </div>
+              </div>
+
+              <div class="skill-bar-container">
+                <div class="info">
+                  <small>JavaScript</small>
+                  <small>70%</small>
+                </div>
+                <div class="skill-level">
+                  <div class="skill-bar js"></div>
+                </div>
+              </div>
+
+              <div class="skill-bar-container">
+                <div class="info">
+                  <small>React</small>
+                  <small>50%</small>
+                </div>
+                <div class="skill-level">
+                  <div class="skill-bar react"></div>
+                </div>
+              </div>
+
+              <div class="skill-bar-container">
+                <div class="info">
+                  <small>Node.js</small>
+                  <small>60%</small>
+                </div>
+                <div class="skill-level">
+                  <div class="skill-bar node"></div>
+                </div>
+              </div>
+
+              <div class="skill-bar-container">
+                <div class="info">
+                  <small>Express.js</small>
+                  <small>60%</small>
+                </div>
+                <div class="skill-level">
+                  <div class="skill-bar express"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT SECTION -->
+      <section class="section bg-white" id="about">
+        <div class="container">
+          <div class="row-container">
+            <div class="image-container" data-type="inverted-img">
+              <img src="assets/profile.png" alt="Profile Picture" />
+            </div>
+            <div class="content">
+              <h3>My Journey</h3>
+              <h1>Intro</h1>
+              <p>
+                I am a passionate Full Stack Developer with a love for creating
+                dynamic and responsive web applications. My journey in web
+                development began with a curiosity for how things work, and it
+                has evolved into a full-fledged career. I thrive on challenges
+                and enjoy problem-solving, which drives me to continuously learn
+                and improve my skills.
+              </p>
+              <ul class="information">
+                <li class="detail">
+                  <i class="fa-solid fa-user fill-pink"></i>
+                  Full Name &nbsp; &nbsp;:&nbsp;&nbsp; Syed Jarrar
+                </li>
+                <li class="detail">
+                  <i class="fa-solid fa-phone fill-pink"> </i>
+                  Phone&nbsp;&nbsp;:&nbsp;&nbsp; (+92) 334-3893789
+                </li>
+                <li class="detail">
+                  <i class="fa-solid fa-envelope fill-pink"></i>
+                  Email&nbsp;&nbsp;:&nbsp;&nbsp; syedjarrarofficial@gmail.com
+                </li>
+              </ul>
+              <h4>My Interests</h4>
+              <ul class="interest">
+                <li><i class="fa-solid fa-futbol fill-pink"></i> FootBall</li>
+                <li><i class="fa-solid fa-music fill-pink"></i> Music</li>
+                <li><i class="fa-solid fa-palette fill-pink"></i> Art</li>
+                <li><i class="fa-solid fa-map fill-pink"></i> Travel</li>
+                <li><i class="fa-solid fa-book fill-pink"></i> Reading</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Services Section -->
+      <section class="section bg-light-grey" id="services">
+        <div class="container">
+          <div class="column-container">
+            <div class="content">
+              <h3>Services</h3>
+              <h1>What I Offer</h1>
+            </div>
+            <div class="grid-card-container">
+              <div class="card">
+                <i
+                  class="fa-solid fa-code fill-white"
+                  data-type="card-icon"
+                ></i>
+                <h2>Web Development</h2>
+                <p class="para">
+                  I create responsive and user-friendly websites using the
+                  latest technologies.
+                </p>
+              </div>
+              <div class="card">
+                <i
+                  class="fa-solid fa-mobile-screen-button fill-white"
+                  data-type="card-icon"
+                ></i>
+                <h2>Mobile App Development</h2>
+                <p class="para">
+                  I develop cross-platform mobile applications with seamless
+                  performance.
+                </p>
+              </div>
+              <div class="card">
+                <i
+                  class="fa-solid fa-paintbrush fill-white"
+                  data-type="card-icon"
+                ></i>
+                <h2>UI/UX Design</h2>
+                <p class="para">
+                  I design intuitive user interfaces and enhance user
+                  experiences.
+                </p>
+              </div>
+              <div class="card">
+                <i
+                  class="fa-solid fa-database fill-white"
+                  data-type="card-icon"
+                ></i>
+                <h2>Database Management</h2>
+                <p class="para">
+                  I manage and optimize databases to ensure data integrity and
+                  performance.
+                </p>
+              </div>
+              <div class="card">
+                <i
+                  class="fa-solid fa-cloud fill-white"
+                  data-type="card-icon"
+                ></i>
+                <h2>Cloud Services</h2>
+                <p class="para">
+                  I provide cloud solutions for scalable and secure application
+                  deployment.
+                </p>
+              </div>
+              <div class="card">
+                <i
+                  class="fa-solid fa-shield-halved fill-white"
+                  data-type="card-icon"
+                ></i>
+                <h2>Cybersecurity</h2>
+                <p class="para">
+                  I implement security measures to protect applications from
+                  threats.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Portfolio Section -->
+      <section class="section bg-white" id="portfolio">
+        <div class="container">
+          <div class="column-container">
+            <div class="content">
+              <h3>My PortFolio</h3>
+              <h1>Recent Work</h1>
+            </div>
+            <div class="grid-card-container">
+              <div class="portfolio-card">
+                <a href="#" class="primary-btn demo-btn">View Project</a>
+              </div>
+              <div class="portfolio-card">
+                <a href="#" class="primary-btn demo-btn">View Project</a>
+              </div>
+              <div class="portfolio-card">
+                <a href="#" class="primary-btn demo-btn">View Project</a>
+              </div>
+              <div class="portfolio-card">
+                <a href="#" class="primary-btn demo-btn">View Project</a>
+              </div>
+              <div class="portfolio-card">
+                <a href="#" class="primary-btn demo-btn">View Project</a>
+              </div>
+              <div class="portfolio-card">
+                <a href="#" class="primary-btn demo-btn">View Project</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Work Together Section  -->
+      <section class="project-section bg-pink">
+        <div class="container">
+          <div class="project-content">
+            <h2 class="fill-white">Let's Work Together on Next Project</h2>
+            <p class="fill-light-pink para">
+              I'm open to collaborating on new ideas and projects. Let's
+              connect!
+            </p>
+            <a href="#" class="primary-btn" data-type="white-btn"
+              >Get in Touch</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- ----Testimonial Section ----- -->
+      <section class="section bg-light-grey" id="testimonial">
+        <div class="container">
+          <div class="column-container">
+            <div class="content">
+              <h3>Testimonials</h3>
+              <h1>What My Clients Say</h1>
+            </div>
+            <div class="swiper mySwiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div class="profile-container"></div>
+                  <h4>Hammad Ali</h4>
+                  <img src="assets/ratings.png" alt="Ratings" />
+                  <p class="para">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Quasi libero distinctio quia labore soluta nisi voluptatum
+                    a.
+                  </p>
+                </div>
+                <div class="swiper-slide">
+                  <div class="profile-container"></div>
+                  <h4>Hammad Ali</h4>
+                  <img src="assets/ratings.png" alt="Ratings" />
+                  <p class="para">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Quasi libero distinctio quia labore soluta nisi voluptatum
+                    a.
+                  </p>
+                </div>
+                <div class="swiper-slide">
+                  <div class="profile-container"></div>
+                  <h4>Hammad Ali</h4>
+                  <img src="assets/ratings.png" alt="Ratings" />
+                  <p class="para">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Quasi libero distinctio quia labore soluta nisi voluptatum
+                    a.
+                  </p>
+                </div>
+                <div class="swiper-slide">
+                  <div class="profile-container"></div>
+                  <h4>Hammad Ali</h4>
+                  <img src="assets/ratings.png" alt="Ratings" />
+                  <p class="para">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Quasi libero distinctio quia labore soluta nisi voluptatum
+                    a.
+                  </p>
+                </div>
+                <div class="swiper-slide">
+                  <div class="profile-container"></div>
+                  <h4>Hammad Ali</h4>
+                  <img src="assets/ratings.png" alt="Ratings" />
+                  <p class="para">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Quasi libero distinctio quia labore soluta nisi voluptatum
+                    a.
+                  </p>
+                </div>
+                <div class="swiper-slide">
+                  <div class="profile-container"></div>
+                  <h4>Hammad Ali</h4>
+                  <img src="assets/ratings.png" alt="Ratings" />
+                  <p class="para">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Quasi libero distinctio quia labore soluta nisi voluptatum
+                    a.
+                  </p>
+                </div>
+                <div class="swiper-slide">
+                  <div class="profile-container"></div>
+                  <h4>Hammad Ali</h4>
+                  <img src="assets/ratings.png" alt="Ratings" />
+                  <p class="para">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Quasi libero distinctio quia labore soluta nisi voluptatum
+                    a.
+                  </p>
+                </div>
+                <div class="swiper-slide">
+                  <div class="profile-container"></div>
+                  <h4>Hammad Sir</h4>
+                  <img src="assets/ratings.png" alt="Ratings" />
+                  <p class="para">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Quasi libero distinctio quia labore soluta nisi voluptatum
+                    a.
+                  </p>
+                </div>
+                <div class="swiper-slide">
+                  <div class="profile-container"></div>
+                  <h4>Hammad Sir</h4>
+                  <img src="assets/ratings.png" alt="Ratings" />
+                  <p class="para">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Quasi libero distinctio quia labore soluta nisi voluptatum
+                    a.
+                  </p>
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Contact US Section -->
+      <section class="section bg-white" id="contact">
+        <div class="container">
+          <div class="column-container">
+            <div class="content">
+              <h3>Contact Me</h3>
+              <h1>Get In Touch</h1>
+            </div>
+          <form action="#" class="contact-form"">
+            <input type="text" placeholder="Your Name" required />
+            <input type="text" placeholder="Phone Number" required />
+            <input type="email" placeholder="Email Address" required />
+            <textarea placeholder="Type Your Message Here" rows="6" required></textarea>
+            <input type="submit" value="Send Message" class="primary-btn" />
+          </form>
+        </div>
+      </section>
+    </main>
+    <!-- -----Footer Section----- -->
+    <footer class="footer-section bg-black">
+      <div class="container">
+        <p class="para fill-white">Copyright &copy; 2024 Syed Jarrar. All Rights Reserved.</p>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   </body>
 </html>

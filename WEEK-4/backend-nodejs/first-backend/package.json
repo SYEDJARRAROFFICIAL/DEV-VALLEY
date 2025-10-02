@@ -1,0 +1,22 @@
+{
+  "name": "first-backend",
+  "version": "1.0.0",
+  "description": "my first nodejs project at dev valley",
+  "license": "ISC",
+  "author": "syed jarrar",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.4",
+    "concurrently": "^9.2.1",
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.2",
+    "mongoose": "^8.18.2"
+  }
+}

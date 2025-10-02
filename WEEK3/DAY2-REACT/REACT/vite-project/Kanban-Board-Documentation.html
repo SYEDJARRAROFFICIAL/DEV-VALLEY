@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kanban Board Project Documentation</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        line-height: 1.6;
+        color: #1f2937;
+        background: #ffffff;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 60px;
+        border-bottom: 3px solid #3b82f6;
+        padding-bottom: 30px;
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #1e40af;
+        margin-bottom: 10px;
+      }
+
+      .header .subtitle {
+        font-size: 1.2rem;
+        color: #6b7280;
+        font-weight: 400;
+      }
+
+      .toc {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 30px;
+        margin-bottom: 40px;
+      }
+
+      .toc h2 {
+        color: #1e40af;
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+      }
+
+      .toc ol {
+        list-style: none;
+        counter-reset: toc-counter;
+      }
+
+      .toc li {
+        counter-increment: toc-counter;
+        margin-bottom: 10px;
+        padding-left: 20px;
+        position: relative;
+      }
+
+      .toc li::before {
+        content: counter(toc-counter);
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: #3b82f6;
+        color: white;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .toc a {
+        color: #374151;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .toc a:hover {
+        color: #3b82f6;
+      }
+
+      .section {
+        margin-bottom: 50px;
+        page-break-inside: avoid;
+      }
+
+      .section h2 {
+        color: #1e40af;
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+        border-left: 4px solid #3b82f6;
+        padding-left: 20px;
+      }
+
+      .section h3 {
+        color: #1f2937;
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin: 30px 0 15px 0;
+      }
+
+      .section h4 {
+        color: #374151;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 20px 0 10px 0;
+      }
+
+      .code-block {
+        background: #1e293b;
+        color: #e2e8f0;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 15px 0;
+        font-family: "Courier New", monospace;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        border-left: 4px solid #3b82f6;
+      }
+
+      .method-card {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+        page-break-inside: avoid;
+      }
+
+      .method-card h4 {
+        color: #1e40af;
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+      }
+
+      .method-purpose {
+        background: #dbeafe;
+        border-left: 4px solid #3b82f6;
+        padding: 10px 15px;
+        margin: 10px 0;
+        border-radius: 4px;
+      }
+
+      .method-purpose strong {
+        color: #1e40af;
+      }
+
+      .feature-list {
+        background: #ecfdf5;
+        border: 1px solid #a7f3d0;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+
+      .feature-list ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .feature-list li {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 8px;
+      }
+
+      .feature-list li::before {
+        content: "✅";
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      .flow-diagram {
+        background: #fef3c7;
+        border: 1px solid #fbbf24;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+        text-align: center;
+      }
+
+      .flow-step {
+        display: inline-block;
+        background: #3b82f6;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px;
+        margin: 5px;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      .flow-arrow {
+        display: inline-block;
+        margin: 0 10px;
+        color: #6b7280;
+        font-size: 1.2rem;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      th,
+      td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #e2e8f0;
+      }
+
+      th {
+        background: #f8fafc;
+        font-weight: 600;
+        color: #1e40af;
+      }
+
+      tr:hover {
+        background: #f8fafc;
+      }
+
+      .highlight {
+        background: #fef3c7;
+        padding: 2px 4px;
+        border-radius: 4px;
+        font-family: "Courier New", monospace;
+        font-size: 0.9em;
+      }
+
+      .warning {
+        background: #fef2f2;
+        border-left: 4px solid #ef4444;
+        padding: 15px;
+        border-radius: 4px;
+        margin: 20px 0;
+      }
+
+      .info {
+        background: #eff6ff;
+        border-left: 4px solid #3b82f6;
+        padding: 15px;
+        border-radius: 4px;
+        margin: 20px 0;
+      }
+
+      @media print {
+        body {
+          padding: 20px;
+          font-size: 12px;
+        }
+        .section {
+          page-break-inside: avoid;
+          margin-bottom: 30px;
+        }
+        .method-card {
+          page-break-inside: avoid;
+        }
+        .code-block {
+          page-break-inside: avoid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Kanban Board Project</h1>
+      <div class="subtitle">
+        Complete Technical Documentation & Code Analysis
+      </div>
+      <p style="margin-top: 10px; color: #6b7280">
+        Generated on September 17, 2025
+      </p>
+    </div>
+
+    <div class="toc">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#overview">Project Overview</a></li>
+        <li><a href="#structure">File Structure</a></li>
+        <li><a href="#features">Key Features</a></li>
+        <li><a href="#class-analysis">KanbanBoard Class Analysis</a></li>
+        <li><a href="#methods">Method-by-Method Breakdown</a></li>
+        <li><a href="#data-flow">Data Flow & Interactions</a></li>
+        <li><a href="#technical">Technical Implementation</a></li>
+        <li><a href="#usage">Installation & Usage</a></li>
+      </ol>
+    </div>
+
+    <section id="overview" class="section">
+      <h2>1. Project Overview</h2>
+      <p>
+        <strong>TaskBoard Pro</strong> is a modern, interactive Kanban board
+        application built with vanilla JavaScript, HTML5, and CSS3. It provides
+        a clean interface for managing tasks across three columns: To Do, In
+        Progress, and Done.
+      </p>
+
+      <div class="feature-list">
+        <h3>Key Features</h3>
+        <ul>
+          <li>Add tasks via button click or Enter key</li>
+          <li>Delete tasks with confirmation</li>
+          <li>Drag and drop tasks between columns</li>
+          <li>Persistent storage using localStorage</li>
+          <li>Responsive design with animations</li>
+          <li>Real-time task counting</li>
+          <li>XSS protection with HTML escaping</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="structure" class="section">
+      <h2>2. File Structure</h2>
+      <div class="code-block">
+        vite-project/ ├── index.html # Main HTML structure ├── src/ │ ├──
+        main.js # Core JavaScript logic │ └── style.css # Styling and animations
+        └── Kanban-Board-Documentation.html # This documentation file
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <h2>3. Key Features Analysis</h2>
+
+      <h3>Core Functionality</h3>
+      <ul>
+        <li>
+          <strong>Task Management:</strong> Create, read, update, delete
+          operations
+        </li>
+        <li>
+          <strong>Column Organization:</strong> Three-column workflow (Todo,
+          Doing, Done)
+        </li>
+        <li>
+          <strong>Drag & Drop:</strong> Intuitive task movement between columns
+        </li>
+        <li>
+          <strong>Data Persistence:</strong> Browser localStorage for
+          cross-session data
+        </li>
+      </ul>
+
+      <h3>User Experience</h3>
+      <ul>
+        <li>
+          <strong>Animations:</strong> Smooth transitions and visual feedback
+        </li>
+        <li>
+          <strong>Responsive Design:</strong> Works on desktop and mobile
+          devices
+        </li>
+        <li>
+          <strong>Keyboard Support:</strong> Enter key for quick task addition
+        </li>
+        <li><strong>Visual Indicators:</strong> Task counts and drag states</li>
+      </ul>
+
+      <h3>Security & Performance</h3>
+      <ul>
+        <li><strong>XSS Prevention:</strong> HTML escaping for user input</li>
+        <li>
+          <strong>Input Validation:</strong> Trim whitespace and empty checks
+        </li>
+        <li>
+          <strong>Event Delegation:</strong> Efficient event handling for
+          dynamic content
+        </li>
+      </ul>
+    </section>
+
+    <section id="class-analysis" class="section">
+      <h2>4. KanbanBoard Class Analysis</h2>
+
+      <h3>Class Structure</h3>
+      <div class="code-block">
+        class KanbanBoard { constructor() { this.tasks = { todo: [], doing: [],
+        done: [] }; this.taskIdCounter = 1; this.draggedTask = null;
+        this.init(); } // 13 methods for complete functionality }
+      </div>
+
+      <h3>Properties</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="highlight">this.tasks</span></td>
+            <td>Object</td>
+            <td>Contains arrays for each column's tasks</td>
+          </tr>
+          <tr>
+            <td><span class="highlight">this.taskIdCounter</span></td>
+            <td>Number</td>
+            <td>Ensures unique ID for each task</td>
+          </tr>
+          <tr>
+            <td><span class="highlight">this.draggedTask</span></td>
+            <td>Object/null</td>
+            <td>Stores info about currently dragged task</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="methods" class="section">
+      <h2>5. Method-by-Method Breakdown</h2>
+
+      <div class="method-card">
+        <h4>1. constructor()</h4>
+        <div class="method-purpose">
+          <strong>Purpose:</strong> Initialize the Kanban board instance with
+          default state
+        </div>
+        <div class="code-block">
+          constructor() { this.tasks = { todo: [], doing: [], done: [] };
+          this.taskIdCounter = 1; this.draggedTask = null; this.init(); }
+        </div>
+        <p>
+          <strong>How it works:</strong> Sets up initial data structures,
+          counters, and calls initialization method. Runs automatically when
+          <span class="highlight">new KanbanBoard()</span> is called.
+        </p>
+      </div>
+
+      <div class="method-card">
+        <h4>2. init()</h4>
+        <div class="method-purpose">
+          <strong>Purpose:</strong> Orchestrate the setup of all board
+          functionality
+        </div>
+        <div class="code-block">
+          init() { this.loadTasks(); this.setupEventListeners();
+          this.setupDragAndDrop(); this.updateTaskCounts(); }
+        </div>
+        <p>
+          <strong>How it works:</strong> Calls four key setup methods in
+          sequence to prepare the board for use.
+        </p>
+      </div>
+
+      <div class="method-card">
+        <h4>3. setupEventListeners()</h4>
+        <div class="method-purpose">
+          <strong>Purpose:</strong> Handle user input for adding tasks
+        </div>
+        <div class="code-block">
+          setupEventListeners() { // Button click listeners for each column
+          document.getElementById("todo-add") .addEventListener("click", () =>
+          this.addTask("todo")); // Enter key listeners for input fields
+          document.getElementById("todo-input") .addEventListener("keypress",
+          (e) => { if (e.key === "Enter") this.addTask("todo"); }); // ...
+          similar for other columns }
+        </div>
+        <p>
+          <strong>Key Features:</strong> Uses arrow functions to preserve
+          <span class="highlight">this</span> context, supports both click and
+          Enter key interactions.
+        </p>
+      </div>
+
+      <div class="method-card">
+        <h4>4. addTask(column)</h4>
+        <div class="method-purpose">
+          <strong>Purpose:</strong> Create and add new tasks to specified column
+        </div>
+        <div class="code-block">
+          addTask(column) { const input =
+          document.getElementById(`${column}-input`); const text =
+          input.value.trim(); if (!text) return; // Guard clause const task = {
+          id: this.taskIdCounter++, text: text, createdAt: new
+          Date().toISOString(), }; this.tasks[column].push(task); input.value =
+          ""; this.renderTasks(); this.saveTasks(); this.updateTaskCounts(); }
+        </div>
+        <p>
+          <strong>Process:</strong> Input validation → Task creation → Data
+          update → UI refresh → Persistence
+        </p>
+      </div>
+
+      <div class="method-card">
+        <h4>5. deleteTask(taskId, column)</h4>
+        <div class="method-purpose">
+          <strong>Purpose:</strong> Remove tasks from the board
+        </div>
+        <div class="code-block">
+          deleteTask(taskId, column) { this.tasks[column] =
+          this.tasks[column].filter( (task) => task.id !== taskId );
+          this.renderTasks(); this.saveTasks(); this.updateTaskCounts(); }
+        </div>
+        <p>
+          <strong>How it works:</strong> Uses Array.filter() to create new array
+          without deleted task, then updates UI.
+        </p>
+      </div>
+
+      <div class="method-card">
+        <h4>6. renderTasks()</h4>
+        <div class="method-purpose">
+          <strong>Purpose:</strong> Update the UI to reflect current task state
+        </div>
+        <div class="code-block">
+          renderTasks() { ["todo", "doing", "done"].forEach((column) => { const
+          container = document.getElementById(`${column}-tasks`);
+          container.innerHTML = ""; this.tasks[column].forEach((task) => { const
+          taskElement = this.createTaskElement(task, column);
+          container.appendChild(taskElement); }); }); }
+        </div>
+        <p>
+          <strong>Strategy:</strong> Complete re-render approach - clears
+          containers and rebuilds from data.
+        </p>
+      </div>
+
+      <div class="method-card">
+        <h4>7. createTaskElement(task, column)</h4>
+        <div class="method-purpose">
+          <strong>Purpose:</strong> Generate DOM elements for individual tasks
+        </div>
+        <div class="code-block">
+          createTaskElement(task, column) { const taskDiv =
+          document.createElement("div"); taskDiv.className = "task";
+          taskDiv.draggable = true; taskDiv.dataset.taskId = task.id;
+          taskDiv.dataset.column = column; taskDiv.innerHTML = ` &lt;div
+          class="task-content"&gt;
+          &lt;p&gt;${this.escapeHtml(task.text)}&lt;/p&gt; &lt;span&gt;${new
+          Date(task.createdAt).toLocaleDateString()}&lt;/span&gt; &lt;button
+          onclick="kanban.deleteTask(${task.id}, '${column}')"&gt; Delete
+          &lt;/button&gt; &lt;/div&gt; `; return taskDiv; }
+        </div>
+        <p>
+          <strong>Security:</strong> Uses
+          <span class="highlight">escapeHtml()</span> to prevent XSS attacks
+          from user input.
+        </p>
+      </div>
+
+      <div class="method-card">
+        <h4>8. setupDragAndDrop()</h4>
+        <div class="method-purpose">
+          <strong>Purpose:</strong> Enable drag-and-drop functionality between
+          columns
+        </div>
+        <div class="code-block">
+          setupDragAndDrop() { // Container events for each column ["todo",
+          "doing", "done"].forEach((column) => { const container =
+          document.getElementById(`${column}-tasks`);
+          container.addEventListener("dragover", (e) => { e.preventDefault();
+          container.classList.add("drag-over"); });
+          container.addEventListener("drop", (e) => { e.preventDefault();
+          this.handleDrop(e, column); }); }); // Global task events using event
+          delegation document.addEventListener("dragstart", (e) => { if
+          (e.target.classList.contains("task")) { this.draggedTask = { id:
+          parseInt(e.target.dataset.taskId), column: e.target.dataset.column, };
+          } }); }
+        </div>
+        <p>
+          <strong>Pattern:</strong> Uses event delegation for dynamic content
+          and provides visual feedback during drag operations.
+        </p>
+      </div>
+
+      <div class="method-card">
+        <h4>9. handleDrop(e, targetColumn)</h4>
+        <div class="method-purpose">
+          <strong>Purpose:</strong> Move tasks between columns via drag-and-drop
+        </div>
+        <div class="code-block">
+          handleDrop(e, targetColumn) { if (!this.draggedTask) return; const {
+          id, column: sourceColumn } = this.draggedTask; if (sourceColumn ===
+          targetColumn) return; // Find and move the task const taskIndex =
+          this.tasks[sourceColumn].findIndex( (task) => task.id === id ); const
+          task = this.tasks[sourceColumn].splice(taskIndex, 1)[0];
+          this.tasks[targetColumn].push(task); this.renderTasks();
+          this.saveTasks(); this.updateTaskCounts(); }
+        </div>
+        <p>
+          <strong>Logic:</strong> Validation → Find task → Remove from source →
+          Add to target → Update UI
+        </p>
+      </div>
+
+      <div class="section">
+        <h3>🎯 Deep Dive: Drag & Drop Implementation</h3>
+
+        <div class="info">
+          <strong>HTML5 Drag & Drop API:</strong> This Kanban board uses the
+          native browser Drag & Drop API, which provides a robust foundation for
+          drag-and-drop interactions without external libraries.
+        </div>
+
+        <h4>The Drag & Drop Lifecycle</h4>
+        <div class="method-card">
+          <h4>1. Making Elements Draggable</h4>
+          <div class="code-block">
+            // In createTaskElement() method taskDiv.draggable = true; // Makes
+            the task element draggable taskDiv.dataset.taskId = task.id; //
+            Stores task ID for later reference taskDiv.dataset.column = column;
+            // Stores source column
+          </div>
+          <p>
+            <strong>Key Point:</strong> Every task element gets
+            <span class="highlight">draggable="true"</span> and data attributes
+            for identification during the drag operation.
+          </p>
+        </div>
+
+        <div class="method-card">
+          <h4>2. Drag Start Event (Global)</h4>
+          <div class="code-block">
+            document.addEventListener("dragstart", (e) => {
+            console.log("dragstart"); if (e.target.classList.contains("task")) {
+            // Store information about what's being dragged this.draggedTask = {
+            id: Number.parseInt(e.target.dataset.taskId), column:
+            e.target.dataset.column, }; // Add visual feedback
+            e.target.classList.add("dragging"); } });
+          </div>
+          <div class="method-purpose">
+            <strong>What happens:</strong>
+            <ul>
+              <li>🎯 Detects when any task starts being dragged</li>
+              <li>
+                📝 Stores the task ID and source column in
+                <span class="highlight">this.draggedTask</span>
+              </li>
+              <li>
+                🎨 Adds "dragging" CSS class for visual feedback (opacity, etc.)
+              </li>
+              <li>🔍 Uses event delegation - one listener handles all tasks</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="method-card">
+          <h4>3. Drag Over Event (Target Containers)</h4>
+          <div class="code-block">
+            container.addEventListener("dragover", (e) => {
+            console.log("dragover"); e.preventDefault(); // CRITICAL: Allows
+            dropping container.classList.add("drag-over"); // Visual feedback
+            });
+          </div>
+          <div class="method-purpose">
+            <strong>Critical Details:</strong>
+            <ul>
+              <li>
+                ⚠️ <span class="highlight">e.preventDefault()</span> is REQUIRED
+                - without it, drop won't work!
+              </li>
+              <li>🎨 Adds "drag-over" class to show drop zone is active</li>
+              <li>🔄 Fires continuously while dragging over the container</li>
+              <li>📍 Each column container has its own dragover listener</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="method-card">
+          <h4>4. Drag Leave Event (Target Containers)</h4>
+          <div class="code-block">
+            container.addEventListener("dragleave", (e) => {
+            console.log("dragleave"); if (!container.contains(e.relatedTarget))
+            { container.classList.remove("drag-over"); } });
+          </div>
+          <div class="method-purpose">
+            <strong>Smart Logic:</strong>
+            <ul>
+              <li>
+                🧠
+                <span class="highlight"
+                  >container.contains(e.relatedTarget)</span
+                >
+                prevents flicker
+              </li>
+              <li>
+                🎨 Only removes "drag-over" class when truly leaving the
+                container
+              </li>
+              <li>
+                🛡️ Handles nested elements properly (task cards inside
+                containers)
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="method-card">
+          <h4>5. Drop Event (Target Containers)</h4>
+          <div class="code-block">
+            container.addEventListener("drop", (e) => { console.log("drop");
+            e.preventDefault(); // Prevent default handling
+            container.classList.remove("drag-over"); // Clean up visual state
+            this.handleDrop(e, column); // Process the drop });
+          </div>
+          <div class="method-purpose">
+            <strong>Drop Processing:</strong>
+            <ul>
+              <li>🛡️ Prevents browser's default drop behavior</li>
+              <li>🧹 Cleans up drag-over visual state</li>
+              <li>
+                🔄 Delegates actual task movement to
+                <span class="highlight">handleDrop()</span>
+              </li>
+              <li>📍 Passes the target column to identify where to drop</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="method-card">
+          <h4>6. Drag End Event (Global)</h4>
+          <div class="code-block">
+            document.addEventListener("dragend", (e) => {
+            console.log("dragend"); if (e.target.classList.contains("task")) {
+            e.target.classList.remove("dragging"); // Remove visual feedback
+            this.draggedTask = null; // Clear drag state } });
+          </div>
+          <div class="method-purpose">
+            <strong>Cleanup Phase:</strong>
+            <ul>
+              <li>🧹 Removes "dragging" class from the dragged element</li>
+              <li>
+                🔄 Resets <span class="highlight">this.draggedTask</span> to
+                null
+              </li>
+              <li>✅ Ensures clean state regardless of success/failure</li>
+              <li>🔄 Fires even if drop was invalid or cancelled</li>
+            </ul>
+          </div>
+        </div>
+
+        <h4>The Data Movement Process</h4>
+        <div class="method-card">
+          <h4>handleDrop() - The Heart of Task Movement</h4>
+          <div class="code-block">
+            handleDrop(e, targetColumn) { // 🛡️ VALIDATION PHASE if
+            (!this.draggedTask) return; // No drag in progress const { id,
+            column: sourceColumn } = this.draggedTask; console.log("source
+            column", sourceColumn, "target column", targetColumn); if
+            (sourceColumn === targetColumn) return; // Same column, no move
+            needed // 🔍 FIND PHASE const taskIndex =
+            this.tasks[sourceColumn].findIndex( (task) => task.id === id ); if
+            (taskIndex === -1) return; // Task not found (safety check) // ✂️
+            MOVE PHASE const task = this.tasks[sourceColumn].splice(taskIndex,
+            1)[0]; // Remove from source this.tasks[targetColumn].push(task); //
+            Add to target // 🔄 UPDATE PHASE this.renderTasks(); // Re-render
+            all tasks this.saveTasks(); // Save to localStorage
+            this.updateTaskCounts(); // Update column badges // 🎨 ANIMATION
+            PHASE document.getElementById(targetColumn).classList.add("pulse");
+            setTimeout(() => {
+            document.getElementById(targetColumn).classList.remove("pulse"); },
+            200); }
+          </div>
+        </div>
+
+        <div class="flow-diagram">
+          <h4>Complete Drag & Drop Flow</h4>
+          <div class="flow-step">User starts drag</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step">dragstart fires</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step">Store draggedTask</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step">dragover (target)</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step">Visual feedback</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step">drop event</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step">handleDrop()</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step">Data update</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step">UI re-render</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step">dragend cleanup</div>
+        </div>
+
+        <div class="warning">
+          <h4>⚠️ Critical Implementation Details</h4>
+          <ul>
+            <li>
+              <strong>preventDefault() is essential:</strong> Both dragover and
+              drop events MUST call preventDefault() or dropping won't work
+            </li>
+            <li>
+              <strong>Event delegation:</strong> dragstart and dragend use
+              document-level listeners because task elements are created
+              dynamically
+            </li>
+            <li>
+              <strong>Data attributes:</strong> Task elements store their ID and
+              column in data-* attributes for identification during drag
+            </li>
+            <li>
+              <strong>State management:</strong> this.draggedTask maintains drag
+              state throughout the operation
+            </li>
+            <li>
+              <strong>Visual feedback:</strong> CSS classes (dragging,
+              drag-over) provide user feedback during the process
+            </li>
+          </ul>
+        </div>
+
+        <div class="info">
+          <h4>🎯 Why This Implementation Works</h4>
+          <ul>
+            <li>
+              <strong>Native API:</strong> Uses browser's built-in drag & drop,
+              no external libraries needed
+            </li>
+            <li>
+              <strong>Event delegation:</strong> Handles dynamically created
+              tasks efficiently
+            </li>
+            <li>
+              <strong>Clean separation:</strong> Visual feedback separate from
+              data operations
+            </li>
+            <li>
+              <strong>Robust validation:</strong> Multiple safety checks prevent
+              errors
+            </li>
+            <li>
+              <strong>Immediate feedback:</strong> Users see changes instantly
+              with animations
+            </li>
+          </ul>
+        </div>
+
+        <h4>CSS Classes for Visual Feedback</h4>
+        <div class="code-block">
+          /* Applied to dragged task */ .task.dragging { opacity: 0.5;
+          transform: rotate(2deg); } /* Applied to valid drop zones */
+          .drop-zone.drag-over { background-color: #dbeafe; border: 2px dashed
+          #3b82f6; } /* Animation for successful drop */ .pulse { animation:
+          pulse 0.2s ease-in-out; }
+        </div>
+      </div>
+
+      <div class="method-card">
+        <h4>10. updateTaskCounts()</h4>
+        <div class="method-purpose">
+          <strong>Purpose:</strong> Update task count badges in column headers
+        </div>
+        <div class="code-block">
+          updateTaskCounts() { document.getElementById("todo-count").textContent
+          = this.tasks.todo.length;
+          document.getElementById("doing-count").textContent =
+          this.tasks.doing.length;
+          document.getElementById("done-count").textContent =
+          this.tasks.done.length; }
+        </div>
+        <p>
+          <strong>Usage:</strong> Called after any operation that changes task
+          quantities.
+        </p>
+      </div>
+
+      <div class="method-card">
+        <h4>11. saveTasks()</h4>
+        <div class="method-purpose">
+          <strong>Purpose:</strong> Persist data to browser's localStorage
+        </div>
+        <div class="code-block">
+          saveTasks() { localStorage.setItem("kanban-tasks",
+          JSON.stringify(this.tasks)); localStorage.setItem("kanban-counter",
+          this.taskIdCounter.toString()); }
+        </div>
+        <p>
+          <strong>Data:</strong> Saves both task data and ID counter for
+          complete state preservation.
+        </p>
+      </div>
+
+      <div class="method-card">
+        <h4>12. loadTasks()</h4>
+        <div class="method-purpose">
+          <strong>Purpose:</strong> Restore data from localStorage on page load
+        </div>
+        <div class="code-block">
+          loadTasks() { const savedTasks = localStorage.getItem("kanban-tasks");
+          const savedCounter = localStorage.getItem("kanban-counter"); if
+          (savedTasks) { this.tasks = JSON.parse(savedTasks); } if
+          (savedCounter) { this.taskIdCounter = parseInt(savedCounter); }
+          this.renderTasks(); }
+        </div>
+        <p>
+          <strong>Safety:</strong> Includes existence checks before parsing to
+          prevent errors.
+        </p>
+      </div>
+
+      <div class="method-card">
+        <h4>13. escapeHtml(text)</h4>
+        <div class="method-purpose">
+          <strong>Purpose:</strong> Prevent XSS attacks by escaping HTML
+          characters
+        </div>
+        <div class="code-block">
+          escapeHtml(text) { const div = document.createElement("div");
+          div.textContent = text; return div.innerHTML; }
+        </div>
+        <p>
+          <strong>Security:</strong> Converts dangerous characters like
+          <span class="highlight">&lt;script&gt;</span> to safe HTML entities
+          <span class="highlight">&amp;lt;script&amp;gt;</span>.
+        </p>
+      </div>
+    </section>
+
+    <section id="data-flow" class="section">
+      <h2>6. Data Flow & Interactions</h2>
+
+      <h3>Application Lifecycle</h3>
+      <div class="flow-diagram">
+        <div class="flow-step">new KanbanBoard()</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">constructor()</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">init()</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">loadTasks()</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">renderTasks()</div>
+      </div>
+
+      <h3>Adding Tasks Flow</h3>
+      <div class="flow-diagram">
+        <div class="flow-step">User Input</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">addTask()</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Array.push()</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">renderTasks()</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">saveTasks()</div>
+      </div>
+
+      <h3>Drag & Drop Flow</h3>
+      <div class="flow-diagram">
+        <div class="flow-step">dragStart</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Store draggedTask</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">drop Event</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">handleDrop()</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Move Task Data</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Update UI</div>
+      </div>
+
+      <h3>State Management</h3>
+      <ul>
+        <li>
+          <strong>Data Layer:</strong>
+          <span class="highlight">this.tasks</span> object contains all task
+          data
+        </li>
+        <li><strong>UI Layer:</strong> DOM elements reflect current state</li>
+        <li>
+          <strong>Persistence Layer:</strong> localStorage maintains data across
+          sessions
+        </li>
+        <li>
+          <strong>Synchronization:</strong> Every data change triggers UI
+          updates
+        </li>
+      </ul>
+    </section>
+
+    <section id="technical" class="section">
+      <h2>7. Technical Implementation</h2>
+
+      <h3>Design Patterns</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Pattern</th>
+            <th>Implementation</th>
+            <th>Benefits</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Class-Based Architecture</td>
+            <td>Single KanbanBoard class</td>
+            <td>Encapsulation, organization</td>
+          </tr>
+          <tr>
+            <td>Event Delegation</td>
+            <td>Document-level listeners</td>
+            <td>Handles dynamic content</td>
+          </tr>
+          <tr>
+            <td>Separation of Concerns</td>
+            <td>Data vs UI methods</td>
+            <td>Maintainability</td>
+          </tr>
+          <tr>
+            <td>Guard Clauses</td>
+            <td>Early returns</td>
+            <td>Prevents invalid operations</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Performance Considerations</h3>
+      <div class="info">
+        <strong>Complete Re-rendering:</strong> The app uses a simple but
+        potentially inefficient approach for large datasets by re-rendering all
+        tasks on every change.
+      </div>
+
+      <div class="info">
+        <strong>LocalStorage:</strong> Synchronous operations may block UI for
+        large amounts of data.
+      </div>
+
+      <h3>Security Features</h3>
+      <ul>
+        <li>
+          <strong>XSS Prevention:</strong> HTML escaping prevents script
+          injection
+        </li>
+        <li>
+          <strong>Input Validation:</strong> Trim and check for empty inputs
+        </li>
+        <li>
+          <strong>Safe DOM Updates:</strong> Uses textContent where possible
+        </li>
+      </ul>
+
+      <h3>Browser Compatibility</h3>
+      <div class="warning">
+        <strong>Modern Features Required:</strong> Uses ES6+ features (arrow
+        functions, template literals, destructuring) and HTML5 drag-and-drop
+        API.
+      </div>
+    </section>
+
+    <section id="usage" class="section">
+      <h2>8. Installation & Usage</h2>
+
+      <h3>Setup Instructions</h3>
+      <ol>
+        <li><strong>Clone/Download</strong> the project files</li>
+        <li>
+          <strong>Open</strong> <span class="highlight">index.html</span> in a
+          web browser
+        </li>
+        <li>
+          <strong>Start</strong> adding tasks and organizing your workflow
+        </li>
+      </ol>
+
+      <h3>Usage Guide</h3>
+      <ul>
+        <li>
+          <strong>Add Tasks:</strong> Type in input fields and press Enter or
+          click "Add Task"
+        </li>
+        <li>
+          <strong>Delete Tasks:</strong> Click the delete button (X) on any task
+        </li>
+        <li><strong>Move Tasks:</strong> Drag tasks between columns</li>
+        <li>
+          <strong>Persistence:</strong> Tasks are automatically saved and
+          restored
+        </li>
+      </ul>
+
+      <h3>File Organization</h3>
+      <div class="code-block">
+        Project Files: ├── index.html # Main application entry point ├──
+        src/main.js # Core JavaScript logic (229 lines) ├── src/style.css #
+        Styling and animations └── Kanban-Board-Documentation.html # This
+        documentation file Key Components: - KanbanBoard class with 13 methods -
+        Event-driven architecture - LocalStorage persistence - Drag & drop
+        functionality
+      </div>
+    </section>
+
+    <div
+      class="section"
+      style="
+        text-align: center;
+        margin-top: 60px;
+        border-top: 2px solid #e2e8f0;
+        padding-top: 30px;
+      "
+    >
+      <h3>Project Summary</h3>
+      <p>
+        This Kanban board implementation demonstrates modern web development
+        practices with vanilla JavaScript, providing a solid foundation for task
+        management applications. The code is well-structured, secure, and
+        user-friendly, making it suitable for both learning and production use.
+      </p>
+
+      <div style="margin-top: 30px; color: #6b7280; font-size: 0.9rem">
+        <p>
+          <strong>Total Code:</strong> 229 lines of JavaScript |
+          <strong>Methods:</strong> 13 | <strong>Features:</strong> 7+
+        </p>
+        <p>
+          <strong>Technologies:</strong> Vanilla JavaScript, HTML5, CSS3,
+          LocalStorage API
+        </p>
+        <p><strong>Documentation Generated:</strong> September 17, 2025</p>
+      </div>
+    </div>
+  </body>
+</html>
