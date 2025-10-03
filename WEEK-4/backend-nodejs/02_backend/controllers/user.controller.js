@@ -344,6 +344,69 @@ const resetPassword = async (req, res) => {
     });
   }
 };
+const allUsers = async (req, res) => {
+  try {
+    // role should only be user
+    const users = await User.find({ role: "user" }).select("-password");
+    res.status(200).json({
+      success: true,
+      data: users,
+    });
+  } catch (error) {
+    console.error("Get all users error:", error);
+    res.status(500).json({
+      success: false,
+      message: "Error fetching users",
+    });
+  }
+};
+
+const deleteUser = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const user = await User.findByIdAndDelete(id);
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+    res.status(200).json({
+      success: true,
+      message: "User deleted successfully",
+    });
+  } catch (error) {
+    console.error("Delete user error:", error);
+    res.status(500).json({
+      success: false,
+      message: "Error deleting user",
+    });
+  }
+};
+const updateUserRole = async (req, res) => {
+  const { id } = req.params;
+  const { role, email } = req.body;
+  try {
+    const user = await User.findByIdAndUpdate(id, { role }, { new: true });
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+    res.status(200).json({
+      success: true,
+      message: "User role updated successfully",
+    });
+  } catch (error) {
+    console.error("Update user role error:", error);
+    res.status(500).json({
+      success: false,
+      message: "Error updating user role",
+    });
+  }
+};
+
 export {
   registerUser,
   loginUser,
@@ -351,4 +414,7 @@ export {
   verifyUser,
   forgotPassword,
   resetPassword,
+  allUsers,
+  deleteUser,
+  updateUserRole,
 };
